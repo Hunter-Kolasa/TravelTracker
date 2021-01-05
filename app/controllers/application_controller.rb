@@ -5,9 +5,6 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-  end
-
-  configure do
     enable :sessions
     set :session_secret, "secret"
   end
@@ -16,32 +13,47 @@ class ApplicationController < Sinatra::Base
     erb :home
   end
 
-  get '/registrations/signup' do
-    erb :'/registrations/signup'
+  get '/registration/signup' do
+    erb :'/registration/signup'
   end
 
-  post '/registrations' do
-    @user = User.new(name: params[:name], email: params[:email], password: params[:password])
-    @user.save
-    session[:user_id] = @user.id
-    
-    redirect '/users/home'
+  post '/registration' do
+    @user = User.find_by(email: params[:email])
+    if @user
+      erb :'registration/account_exists'
+    else
+      if params[:password] == "" || params[:name] == "" || params[:email] == ""
+        erb :failed
+      else
+        @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+        session[:user_id] = @user.id
+        redirect '/user/home'
+      end
+    end 
   end
 
   get '/sessions/login' do
-
-    # the line of code below render the view page in app/views/sessions/login.erb
     erb :'sessions/login'
   end
 
   post '/sessions' do
-    
-    @user = User.find_by(email: params[:email], password: params[:password])
-    if @user
-      session[:user_id] = @user.id
-      redirect '/users/home'
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect '/user/home'
+    else
+      erb :failed
     end
-    redirect '/sessions/login'
+  end
+
+  get '/sessions/logout' do
+    session.clear
+    redirect '/'
+  end
+
+  get '/user/home' do
+    @user = User.find(session[:user_id])
+    erb :'/user/home'
   end
 
 end
