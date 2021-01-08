@@ -56,16 +56,34 @@ class ApplicationController < Sinatra::Base
     @vacations = Vacation.select{|v| v.user_id == session[:user_id]}
     erb :'/user/home'
   end
+  
 
-  get '/user/vacation/:id' do
-    @vacation = Vacation.find(params[:id])
-    erb :'user/vacation'
+  #new request for new vacation
+  get '/vacations/new' do
+    erb :'vacations/new'
   end
 
+  get '/vacations/show/:id' do
+    @vacation = Vacation.find(params[:id])
+    erb :'/vacations/show'
+  end
 
-  post '/user/vacation/:id' do
+  #creates new Vacation instance out of recieved params
+  #sends instance data to /vacations/show
+  post '/vacations/show/:id' do
     @vacation = Vacation.create(title: params[:title], location: params[:location], date: params[:date], description: params[:description], user_id: session[:user_id])
-    erb :'user/vacation'
+    erb :'/vacations/show'
+  end
+
+  get '/vacations/:id/edit' do
+    @vacation = Vacation.find(params[:id])
+    erb :'vacations/edit'
+  end
+
+  patch '/vacations/show/:id' do
+    @vacation = Vacation.find(params[:id])
+    @vacation.update(title: params[:title], location: params[:location], date: params[:date], description: params[:description])
+    erb :'/vacations/show'
   end
 
 end

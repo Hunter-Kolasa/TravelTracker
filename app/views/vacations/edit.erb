@@ -1,0 +1,9 @@
+<form method="post" action="/vacations/show/<%= @vacation.id %>">
+    <input type="hidden" name="_method" value="patch">
+    <h1> Make Changes to <%= @vacation.title %> </h1>
+    <p>Title: <input type="text" id="title" name="title" value="<%= @vacation.title %>"</p>
+    <p>Location: <input type="text" id="location" name="location" value="<%= @vacation.location %>"></p>
+    <p>Date: <input type="date" id="date" name="date" value="<%= @vacation.date %>"></p>
+    <textarea id="description" id="description" name="description" rows="4" cols="50" ><%= @vacation.description %></textarea><br/>
+    <button type="submit">Save Changes</button><br/><br/>
+</form>
