@@ -7,3 +7,7 @@
     <textarea id="description" id="description" name="description" rows="4" cols="50" ><%= @vacation.description %></textarea><br/>
     <button type="submit">Save Changes</button><br/><br/>
 </form>
+<form action="/vacations/show/<%= @vacation.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>Delete</button>
+</form>

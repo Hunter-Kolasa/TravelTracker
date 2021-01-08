@@ -12,15 +12,16 @@
   }
 
   /* --- Welcome Page Styles --- */
+  
   body {
-    background-color: lightblue;
-    color: #333;
+    background-color: rgb(255, 255, 255);
+    color: rgb(17, 17, 17);
     font-family: Sans-Serif;
     line-height: 18px;
   }
 
   .wrapper {
-    background: rgb(180, 180, 180);
+    background: rgb(230, 229, 229);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -60,12 +61,48 @@
     width: 60%; /* 480px / 800px */
   }
 
+  div.nav {
+    width: 100vw;
+    background-color: #f5fbff;
+  }
+
+  ul.nav {
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  body.nav {
+    margin: 0;
+  }
+  
+  li.nav {
+    list-style-type: none;  
+    margin: 0 2vw;
+    font-size: 3vh;
+  }
+
+  a.nav {
+    text-decoration: none;
+    color: black;
+    padding: 2vw;
+    font-family: monospace;
+    display:block;
+  }
+
+  a.nav:hover{
+    background-color: #C6E9FF;
+  }
+
+
+
+
   .sidebar {
     background: #eee;
     border: 1px solid #ccc;
     float: right;
-    padding: 2.08333333333%; /* 5px / 240px */
-    width: 30%; /* 240px / 800px */
+    padding: 2.08333333333%;
+    width: 30%; 
   }
 
   .sidebar ul {

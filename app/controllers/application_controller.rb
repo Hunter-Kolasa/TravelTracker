@@ -9,9 +9,11 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret"
   end
 
+  #main page for login/signup
   get "/" do
     erb :home
   end
+
 
   get '/registration/signup' do
     erb :'/registration/signup'
@@ -32,17 +34,24 @@ class ApplicationController < Sinatra::Base
     end 
   end
 
-  get '/sessions/login' do
+  get '/sessions/login' do  
     erb :'sessions/login'
   end
 
+  #finds user by their email then authenticates password before continuing
+  #displays error page if 
   post '/sessions' do
+    
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect '/user/home'
+    elsif user
+      @error = "Incorrect password"
+      erb :'sessions/login'
     else
-      erb :failed
+      @error = "Your email isn't registered with us!"
+      erb :'sessions/login'
     end
   end
 
@@ -57,7 +66,6 @@ class ApplicationController < Sinatra::Base
     erb :'/user/home'
   end
   
-
   #new request for new vacation
   get '/vacations/new' do
     erb :'vacations/new'
@@ -84,6 +92,13 @@ class ApplicationController < Sinatra::Base
     @vacation = Vacation.find(params[:id])
     @vacation.update(title: params[:title], location: params[:location], date: params[:date], description: params[:description])
     erb :'/vacations/show'
+  end
+
+  #Destroy->send delete request to vacations/show with params
+  delete '/vacations/show/:id' do
+    vacation = Vacation.find(params[:id])
+    vacation.destroy
+    redirect '/user/home'
   end
 
 end
