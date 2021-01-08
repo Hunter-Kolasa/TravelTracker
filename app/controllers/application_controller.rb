@@ -53,7 +53,19 @@ class ApplicationController < Sinatra::Base
 
   get '/user/home' do
     @user = User.find(session[:user_id])
+    @vacations = Vacation.select{|v| v.user_id == session[:user_id]}
     erb :'/user/home'
+  end
+
+  get '/user/vacation/:id' do
+    @vacation = Vacation.find(params[:id])
+    erb :'user/vacation'
+  end
+
+
+  post '/user/vacation/:id' do
+    @vacation = Vacation.create(title: params[:title], location: params[:location], date: params[:date], description: params[:description], user_id: session[:user_id])
+    erb :'user/vacation'
   end
 
 end
