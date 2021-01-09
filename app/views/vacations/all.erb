@@ -1,0 +1,13 @@
+<h1><i>Oh The Places You've Been</i></h1>
+
+<% @vacations.each do |v| %>
+    <ul>
+        <li><a href='/vacations/show/<%= v.id %>'><%= v.title %></a></li>
+        <li><%= v.date %></li>
+        <br>
+    </ul>
+<% end %>
+
+
+
+

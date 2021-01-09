@@ -20,17 +20,18 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registration' do
-    @user = User.find_by(email: params[:email])
-    if @user
-      erb :'registration/account_exists'
+    user = User.new(params)
+    if user.name.empty? || user.email.empty? || user.password_digest.nil?
+      @error = "You need to enter a name, email and password to sign-up!"
+      erb :'/registration/signup'
+    elsif User.find_by(email: user.email.downcase)
+      @error = "That email already exists with us!"
+      erb :'/registration/signup'
     else
-      if params[:password] == "" || params[:name] == "" || params[:email] == ""
-        erb :failed
-      else
-        @user = User.create(name: params[:name], email: params[:email], password: params[:password])
-        session[:user_id] = @user.id
-        redirect '/user/home'
-      end
+      user.email = user.email.downcase
+      user.save(params)
+      session[:user_id] = user.id
+      redirect '/user/home'
     end 
   end
 
@@ -41,8 +42,7 @@ class ApplicationController < Sinatra::Base
   #finds user by their email then authenticates password before continuing
   #displays error page if 
   post '/sessions' do
-    
-    user = User.find_by(email: params[:email])
+    user = User.find_by(email: params[:email].downcase)
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect '/user/home'
@@ -61,19 +61,41 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/user/home' do
-    @user = User.find(session[:user_id])
-    @vacations = Vacation.select{|v| v.user_id == session[:user_id]}
-    erb :'/user/home'
-  end
-  
-  #new request for new vacation
-  get '/vacations/new' do
-    erb :'vacations/new'
+    if logged_in?
+      @user = User.find(session[:user_id])
+      @vacations = Vacation.select{|v| v.user_id == session[:user_id]}
+      erb :'/user/home'
+    else
+      redirect '/'
+    end
   end
 
+  get '/vacations/all' do
+    if logged_in?
+      @vacations = Vacation.select{|v| v.user_id == session[:user_id]}
+      erb :'/vacations/all'
+    else
+      redirect 'sessions/login'
+    end
+  end
+
+  #new request for new vacation
+  get '/vacations/new' do
+    if logged_in?
+      erb :'vacations/new'
+    else
+      redirect '/sessions/login'
+    end
+  end
+
+  
   get '/vacations/show/:id' do
-    @vacation = Vacation.find(params[:id])
-    erb :'/vacations/show'
+    if logged_in?
+      @vacation = Vacation.find(params[:id])
+      erb :'/vacations/show'
+    else
+      redirect '/sessions/login'
+    end
   end
 
   #creates new Vacation instance out of recieved params
@@ -84,8 +106,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/vacations/:id/edit' do
-    @vacation = Vacation.find(params[:id])
-    erb :'vacations/edit'
+    if logged_in?
+      @vacation = Vacation.find(params[:id])
+      erb :'vacations/edit'
+    else
+      redirect '/sessions/login'
+    end
   end
 
   patch '/vacations/show/:id' do
@@ -101,4 +127,7 @@ class ApplicationController < Sinatra::Base
     redirect '/user/home'
   end
 
+  def logged_in?
+    User.find_by(id: session[:user_id])
+  end
 end

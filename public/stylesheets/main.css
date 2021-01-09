@@ -66,6 +66,31 @@
     background-color: #f5fbff;
   }
 
+  div.welcome {
+    border-radius: 15px 50px;
+    padding: 20px;
+    align-items: center;
+    
+    width: 200px;
+    height: 350px;
+    font-size: 5rem;
+	  text-align: center;
+    height:20vh;
+    line-height: 8vh;
+	  color: #fcedd8;
+	  background: #bcbdf8;
+    font-family: 'Niconne', 
+  cursive;
+	    font-weight: 700;
+      text-shadow: 3px 3px 0px #eb452b, 
+                  6px 6px 0px #efa032, 
+                  9px 9px 0px #46b59b, 
+                  12px 12px 0px #017e7f, 
+                  15px 15px 0px #052939, 
+                  18px 18px 0px #bcbdf8, 
+                  21px 21px 0px #b9bbfc 
+  }
+
   ul.nav {
     margin: 0;
     padding: 0;
