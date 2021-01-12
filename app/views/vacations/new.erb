@@ -1,6 +1,7 @@
 <% #populates a new recipe into params and posts to vacations/show/:id %>
 <form method="post" action="/vacations/show/:id">
             <h3>Add a new vacation here!</h3>
+            <p style="color:#AE1F00"><small><i>  <%= @error%></i></small></p>
             <p>Title: <input type="text" id="title" name="title" placeholder="Title"></p>
             <p>Location: <input type="text" id="location" name="location" placeholder="Location"></p>
             <p>Date: <input type="date" id="date" name="date"></p>
