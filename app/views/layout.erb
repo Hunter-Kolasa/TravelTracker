@@ -9,17 +9,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <title>Travel Tracker</title>
     <link rel="stylesheet" href="/stylesheets/main.css" />
-    <div class="nav">
-    <nav class="top">
-      <ul class="nav">
-        <a class='nav' href="/user/home"> Home </a>
-      <li class="nav"> </li>
-        <a class='nav' href="/vacations/all"> Vacations </a>
-      <li class="nav"> </li>
-        <a class='nav' href="/sessions/logout">Logout </a>
+    <div>
+    <nav class="nav">
+      <ul class="bar">
+        <li class="bar"><a href="/user/home"> Home </a></li>
+      
+        <li class="bar"><a href="/vacations/all"> Vacations </a></li>
+      
+        <li class="bar"><a href="/sessions/logout">Logout </a></li>
+
+        <li class="bar"><a href="/about">About</a></li>
       </ul>
     </nav>
     </div>
+    <hr class="hr">
   </head>
   <body>
         <%= yield %>

@@ -1,33 +1,82 @@
-  div.welcome {
-    border-radius: 8px 40px;
-    padding: 20px;
-    width: 300px;
-    height: 200px;
-    font-size: 5rem;
-    text-align: left;
-    margin: auto;
-    line-height: 8vh;
-    color: #fcedd8;
-    background-image:url(/images/texturedgreenbright.jpg);
-    font-family: "Brush Script MT", Times, 
-    cursive; 
-	    font-weight: 700;
-      text-shadow: 3px 3px 0px #eb452b, 
-                  5px 5px 0px #efa032, 
-                  7px 7px 0px #46b59b,  
-                  9px 9px 0px #052939, 
-                  12px 12px 0px #bcbdf8, 
-                  15px 15px 0px #017e7f 
+  html {
+    background: url(/images/Background_logo.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
 
-  img.title {
-    max-width:600px;
-    height:auto;
+  img.nf {
+   position:absolute;
+   top: 0;
+   left: 15%;
+  }
+
+  .error {
+    position:absolute;
+    top: 70%;
+    left: 40%;
+    text-align: center;
+
+  }
+
+  li.unb {
+    list-style-type: none;
+    color: #111;
+  }
+
+  li.unb a {
+    color: #c5c200
+  }
+
+  li.unb a:visited {
+    color: #111;
+  }
+
+  li.unb a:hover {
+    border-radius: 10px;
+    padding: 5px;
+    background-color: rgba(51, 70, 131, 0.5)
+  }
+
+  div.vacation {
+    border-radius: 10px;
+    padding: 15px;
+    background-image:url(/images/texturedgreenbright.jpg);
+    margin: auto;
+    text-align: center;
+    width: 25%;
+    top: 10%;
+  }
+
+
+  .greet {
+    margin:auto;
+    border-radius: 15px;
+    border-color: #111;
+    background-color: #852c00;
+    box-shadow: 0 0 20px #111;
+    width: 30%;
+    text-align: center;
+    font-size: 40px;
+    color:#14afaf;
+  }
+
+  .sep {
+    border-bottom: 1px dashed black;
   }
 
   .fpd {
-    border-radius: 20px;
-    height: 100px;
+    color: #20c4c4;
+    box-shadow: 0 0 20px #111;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    font-size: 23px;
+    
+    border-radius: 50px;
+    height: 55%;
+    width: 80%;
     background-image:url(/images/texturedgreenbright.jpg);
     margin: auto;
     text-align: left;
@@ -35,66 +84,102 @@
   }
 
   .form {
-    border-radius:5px;
+    position:absolute;
+    top: 30%;
+    left: 37%;
+    text-align: center;
+    margin: auto;
+    box-shadow: 0 0 20px #111;
+    width: 20%;
+    border-radius:10px;
     background-image:url(/images/texturedgreenbright.jpg);
+    padding: 10px;
+
+  }
+  
+  .login {
+    border-radius: 10px;
+    box-shadow: 0 0 20px #111;
+    width: 20%;
+    padding: 10px;
+  }
+  div {
+    color:#20c4c4;
+  }
+  .title {
+  
+    max-width:800px;
+    height:auto;
   }
 
-  nav.top {
+  .hr {
+    border-color: #852c00;
+  }
+
+  div.list {
+    color:#c5c200;
+    border-radius: 30px;
+    background-image:url(/images/texturedgreenbright.jpg);
+    width: 30%;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .top {
     background-color:#852c00;
     border-radius:15px;
     margin: auto;
     color: black;
   }
 
-  html {
-    background: url(/images/1183609.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-
-  ul.nav {
-    border-radius: 5px;
-    margin: 10px;
-    padding: 5px;
-    display: flex;
-  }
-
-  body.nav {
+  ul.bar {
+    list-style-type: none;
+    border-radius: 10px;
     margin: 0;
-  }
-  h3.motto {
-    display: block;
-    margin-top: 1em;
-    padding: 1em;
-    border-radius: 10;
+    padding: 0;
+    overflow: hidden;
     background-color:#852c00;
-    text-align: center;
-    border-radius: 15px 5px;
-    line-height: 2vh;
   }
   
-  li.nav {
-    list-style-type: none;  
-    margin: 2vw;
-    font-size: 3vh;
+  li.bar {
+    float: left;
   }
-
-  a.nav {
+  .button {
+    font: bold 11px Arial;
     text-decoration: none;
-    color: black;
-    padding: 2vw;
-    font-family: monospace;
-    display:block;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+  }
+  
+  li.bar a {
+    display: block;
+    color: #22dbdb;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li.bar a:hover {
+    background-color: #111;
   }
 
-  a:visited {
+  li.new {
+    list-style-type: none;
+    text-align:center;
+    margin:auto;
+    text-decoration: none;
+  }
+
+
+  .linkcolor a:visited {
     color: #c5c200;
-  }
-
-  a.nav:hover{
-    background-color: #0b8f81;
   }
 
   .active{
@@ -102,14 +187,22 @@
     color: white;
   }
 
-
   .branding {
     clear: both;
+    color:#bcbdf8;
   }
 
+  footer {
+    position: absolute;
+    bottom: 5%;
+    height: auto;
+    border-radius:5px;
+    width: 20%;
+    box-shadow: 0 0 20px #111;
+  }
   footer.branding {
-    border-top: 2px solid #ccc;
+    align-items: left;
     margin-top: 20px;
-    padding-top: 20px;
+    padding: 20px;
   }
 }

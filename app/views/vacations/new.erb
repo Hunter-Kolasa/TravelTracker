@@ -1,4 +1,5 @@
 <% #populates a new recipe into params and posts to vacations/show/:id %>
+<div class="form">
 <form method="post" action="/vacations/show/:id">
             <h3>Add a new vacation here!</h3>
             <p style="color:#AE1F00"><small><i>  <%= @error%></i></small></p>
@@ -8,3 +9,4 @@
             <textarea id="description" id="description" name="description" rows="4" cols="50" placeholder=" Description"></textarea><br/>
             <button type="submit">Add Vacation</button><br/><br/>
 </form>
+</div>

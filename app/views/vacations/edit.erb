@@ -1,3 +1,4 @@
+<div class="form">
 <form method="post" action="/vacations/show/<%= @vacation.id %>">
     <input type="hidden" name="_method" value="patch">
     <h1> Make Changes to <%= @vacation.title %> </h1>
@@ -12,3 +13,4 @@
     <input type="hidden" name="_method" value="delete">
     <button>Delete</button>
 </form>
+</div>

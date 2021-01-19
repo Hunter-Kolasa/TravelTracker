@@ -1,12 +1,16 @@
 <% #displays recieved instance data across methods built from table data%>
-<h2><%= @vacation.title %></h2>
-<p><%= @vacation.location %></p>
-<p><%= @vacation.date %></p>
-<p><%= @vacation.description %></p></br>
+<div class="vacation">
+    <h2><%= @vacation.title %></h2>
+    <hr>
+    <p><%= @vacation.location %></p>
+    <p><%= @vacation.date %></p>
+    <p><%= @vacation.description %></p></br>
+    <hr>
 <% #link to an update page for current vacation instance %>
-<a href='/vacations/<%= @vacation.id %>/edit'>Edit this entry</a><br><br>
+    <a href='/vacations/<%= @vacation.id %>/edit' class="button">Edit this entry</a><br><br>
 <% #back button to return to /user/home%>
 <% #^^user/home includes new vacation in list%>
 <form method="get" action="/user/home">
  <input type="submit" value="Go back!">
 </form>
+</div>

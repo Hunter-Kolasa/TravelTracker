@@ -1,16 +1,21 @@
 <% #"hello user" %>
 
-<head class="greet"><h2>Welcome, <%=@user.name%>!</h2></head>
+ </head>
 <body>
-<% #Iterates through user's vacation list, diplaying linked titles %>
-<h1> Your Vacations </h1>
-<% @vacations.each do |v| %>
-    <li>
-    <a href="/vacations/show/<%= v.id %>"><%= v.title %></a>
-    </li>
-<% end %>
-<br>
-<% #link to make new vacation %>
-<a href="/vacations/new">Add new vacation!</a>
+    <div class="greet"><h2>Welcome, <%=@user.name%>!</h2></div>
+    <% #Iterates through user's vacation list, diplaying linked titles %>
+    <div class="list">
+        <h1> Your Vacations </h1>
+        <hr style="width:200px; height:4px; background-color: #852c00; border-color: #111;">
+        <% @vacations.each do |v| %>
+            <li class="unb">
+            <a href="/vacations/show/<%= v.id %>"><%= v.title %></a>
+            </li>
+            <br>
+        <% end %>
+    </div>
+    <br>
+        <% #link to make new vacation %>
+        <li class="new"><a href="/vacations/new" class="button">Add new vacation!</a></li>
 </body>
-<br><br>
+
