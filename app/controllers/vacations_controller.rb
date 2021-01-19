@@ -31,11 +31,12 @@ class VacationsController < ApplicationController
       #creates new Vacation instance out of recieved params
       #sends instance data to /vacations/show
     post '/vacations/show/:id' do
-        @vacation = current_user.vacations.build(params)
-        if !@vacation.save
+      if params[:title].empty? || params[:description].empty?
           @error = "Please fill in a title and description"
+          erb :'/vacations/show'
           erb :'/vacations/new'
         else
+          @vacation = Vacation.create(title: params[:title], location: params[:location], date: params[:date], description: params[:description], user_id: session[:user_id])
           erb :'/vacations/show'
         end
     end
